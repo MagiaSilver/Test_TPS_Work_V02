@@ -10,11 +10,11 @@ public class Input_Controller : MonoBehaviour
     [Header("Mobile Control")]
     [SerializeField]
     private PlayerInput playerInput;
-    private InputAction MoveAction;
-    private InputAction RunAction;
-    private InputAction JumpAction;
-    private InputAction CrouchAction;
-    private InputAction CrawlAction;
+    public InputAction MoveAction;
+    public InputAction RunAction;
+    public InputAction JumpAction;
+    public InputAction CrouchAction;
+    public InputAction CrawlAction;
 
     private void Awake()
     {

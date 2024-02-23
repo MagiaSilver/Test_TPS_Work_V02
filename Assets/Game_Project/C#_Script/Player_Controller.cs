@@ -32,14 +32,14 @@ public class Player_Controller : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Movement();
     }
 
     private void Movement()
     {
         Vector2 input = Vector3.zero;
-      
-         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")); 
-
+        input = Input_Controller.instance.MoveAction.ReadValue<Vector2>(); ;
+        direction = transform.forward * input.y +transform.right*input.x ;
+        characterController.Move(direction* moveSpeed*Time.deltaTime);
     }
 }
