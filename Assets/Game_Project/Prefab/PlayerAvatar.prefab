@@ -736,7 +736,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.8
+  m_Height: 1.81
   m_Radius: 0.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -758,8 +758,13 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 3729354910962825243}
   _networkObjectCache: {fileID: 3729354910962825243}
-  moveSpeed: 0
+  moveSpeed: 5
   characterController: {fileID: 0}
+  ground_Y_Offset: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  gravity: -9.8
 --- !u!114 &3729354910962825243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,10 +791,10 @@ MonoBehaviour:
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
   _isGlobal: 1
-  _initializeOrder: 0
+  _initializeOrder: 5
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 0
+  <PrefabId>k__BackingField: 4
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
