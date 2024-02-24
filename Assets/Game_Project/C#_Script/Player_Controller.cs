@@ -25,7 +25,8 @@ public class Player_Controller : NetworkBehaviour
 
     [SerializeField]
     private Transform LoookAt_Pos;
-   public override void OnStartClient()
+    private float CurentVeclocity;
+    public override void OnStartClient()
     {
         base.OnStartClient();
         if (base.IsOwner)
@@ -58,6 +59,10 @@ public class Player_Controller : NetworkBehaviour
         input = Input_Controller.instance.MoveAction.ReadValue<Vector2>(); ;
         direction = transform.forward * input.y +transform.right*input.x ;
         characterController.Move(direction* moveSpeed*Time.deltaTime);
+
+        //float rotation = Mathf.Atan2(transform.eulerAngles.x, Mathf.Rad2Deg + LoookAt_Pos.transform.eulerAngles.y);
+        transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, LoookAt_Pos.transform.eulerAngles.y, ref CurentVeclocity, 0.01f);
+
     }
     private bool IsGrounded()
     {

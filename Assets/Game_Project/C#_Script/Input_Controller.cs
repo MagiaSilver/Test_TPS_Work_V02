@@ -15,6 +15,7 @@ public class Input_Controller : MonoBehaviour
     public InputAction JumpAction;
     public InputAction CrouchAction;
     public InputAction CrawlAction;
+    public InputAction CameraAction;
 
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class Input_Controller : MonoBehaviour
         JumpAction = playerInput.actions["Jump"];
         CrouchAction = playerInput.actions["Crouch"];
         CrawlAction = playerInput.actions["Crawl"];
+        CameraAction = playerInput.actions["Camera"];
     }
 
     // Update is called once per frame

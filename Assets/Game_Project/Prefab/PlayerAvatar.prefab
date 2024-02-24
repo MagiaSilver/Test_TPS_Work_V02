@@ -816,7 +816,10 @@ MonoBehaviour:
       m_RecenteringTime: 0
       m_LegacyHeadingDefinition: 0
       m_LegacyVelocityFilterStrength: 0
+  X_Axis: 0
+  Y_Axis: 0
   camFollowPos: {fileID: 4208314865737791105}
+  RotationSwnsitivity: 0.5
 --- !u!114 &3729354910962825243
 MonoBehaviour:
   m_ObjectHideFlags: 0
