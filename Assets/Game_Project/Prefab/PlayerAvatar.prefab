@@ -699,6 +699,7 @@ GameObject:
   - component: {fileID: 3768367150485561294}
   - component: {fileID: 8609195390481227673}
   - component: {fileID: 3729354910962825240}
+  - component: {fileID: 8520258708809619823}
   - component: {fileID: 3729354910962825243}
   - component: {fileID: 4038513917602376872}
   m_Layer: 0
@@ -767,6 +768,55 @@ MonoBehaviour:
     m_Bits: 64
   gravity: -9.8
   LoookAt_Pos: {fileID: 4208314865737791105}
+--- !u!114 &8520258708809619823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4539695879824672116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2c572898db36a4d83f697ca3bb1fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisState_X:
+    Value: 0
+    m_SpeedMode: 0
+    m_MaxSpeed: 300
+    m_AccelTime: 0
+    m_DecelTime: 0
+    m_InputAxisName: Mouse X
+    m_InputAxisValue: 0
+    m_InvertInput: 0
+    m_MinValue: -180
+    m_MaxValue: 180
+    m_Wrap: 1
+    m_Recentering:
+      m_enabled: 0
+      m_WaitTime: 0
+      m_RecenteringTime: 0
+      m_LegacyHeadingDefinition: 0
+      m_LegacyVelocityFilterStrength: 0
+  axisState_Y:
+    Value: 0
+    m_SpeedMode: 0
+    m_MaxSpeed: 300
+    m_AccelTime: 0
+    m_DecelTime: 0
+    m_InputAxisName: Mouse Y
+    m_InputAxisValue: 0
+    m_InvertInput: 1
+    m_MinValue: -60
+    m_MaxValue: 60
+    m_Wrap: 0
+    m_Recentering:
+      m_enabled: 0
+      m_WaitTime: 0
+      m_RecenteringTime: 0
+      m_LegacyHeadingDefinition: 0
+      m_LegacyVelocityFilterStrength: 0
+  camFollowPos: {fileID: 4208314865737791105}
 --- !u!114 &3729354910962825243
 MonoBehaviour:
   m_ObjectHideFlags: 0
