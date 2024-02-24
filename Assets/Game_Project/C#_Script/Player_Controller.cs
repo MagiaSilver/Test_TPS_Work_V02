@@ -22,12 +22,16 @@ public class Player_Controller : NetworkBehaviour
     [SerializeField]
     private float gravity = -9.8f;
     private Vector3 Velocity;
-    public override void OnStartClient()
+
+    [SerializeField]
+    private Transform LoookAt_Pos;
+   public override void OnStartClient()
     {
         base.OnStartClient();
         if (base.IsOwner)
         {
             characterController = GetComponent<CharacterController>();
+            CameraManager.instance.SetLookAt(LoookAt_Pos);
         }
         else
         {
