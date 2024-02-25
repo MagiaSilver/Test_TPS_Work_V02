@@ -9,6 +9,7 @@ public class Player_Controller : NetworkBehaviour
 {
     [SerializeField]
     private float moveSpeed = 3f;
+    private Vector2 input = Vector3.zero;
     private Vector3 direction;
     [SerializeField]
     private CharacterController characterController;
@@ -26,6 +27,9 @@ public class Player_Controller : NetworkBehaviour
     [SerializeField]
     private Transform LoookAt_Pos;
     private float CurentVeclocity;
+
+    [SerializeField]
+    private Player_Animator animator;
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -51,11 +55,12 @@ public class Player_Controller : NetworkBehaviour
         //if(Input_Controller.instance.MoveAction.IsPressed())
         Movement();
         Gravity();
+        animator.Direction_Input(input.x, input.y);
     }
 
     private void Movement()
     {
-        Vector2 input = Vector3.zero;
+        
         input = Input_Controller.instance.MoveAction.ReadValue<Vector2>(); ;
         direction = transform.forward * input.y +transform.right*input.x ;
         characterController.Move(direction* moveSpeed*Time.deltaTime);
