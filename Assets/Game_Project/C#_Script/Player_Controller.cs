@@ -9,6 +9,7 @@ public class Player_Controller : NetworkBehaviour
 {
     [SerializeField]
     private float moveSpeed = 3f;
+    private float runSpeed = 5f;
     private Vector2 input = Vector3.zero;
     private Vector3 direction;
     [SerializeField]
@@ -30,6 +31,7 @@ public class Player_Controller : NetworkBehaviour
 
     [SerializeField]
     private Player_Animator animator;
+    private bool IsWalk,IsRun,IsCrouch,IsProne;
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -60,15 +62,25 @@ public class Player_Controller : NetworkBehaviour
 
     private void Movement()
     {
-        
+        float Speed;
+        if (Input_Controller.instance.RunAction.IsPressed())
+        {
+            Speed = runSpeed;
+        }
+        else
+        {
+            Speed = moveSpeed;
+        }
+
         input = Input_Controller.instance.MoveAction.ReadValue<Vector2>(); ;
         direction = transform.forward * input.y +transform.right*input.x ;
-        characterController.Move(direction* moveSpeed*Time.deltaTime);
+        characterController.Move(direction * Speed * Time.deltaTime);
 
         //float rotation = Mathf.Atan2(transform.eulerAngles.x, Mathf.Rad2Deg + LoookAt_Pos.transform.eulerAngles.y);
         transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, LoookAt_Pos.transform.eulerAngles.y, ref CurentVeclocity, 0.01f);
 
     }
+
     private bool IsGrounded()
     {
         SpherePos = new Vector3(transform.position.x, transform.position.y - ground_Y_Offset, transform.position.z);
