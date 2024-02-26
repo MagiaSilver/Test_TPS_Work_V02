@@ -218,7 +218,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -497,18 +497,18 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Prone|Prone|Unarmed_Prone_Walk_F_remap
-      takeName: Armature|Prone|Prone|Unarmed_Prone_Walk_F_remap
+      name: Armature|Prone|Prone|Unarmed_Prone_Run_L_remap (1)
+      takeName: Armature|Prone|Prone|Unarmed_Prone_Run_L_remap
       internalID: -8539131309047627415
       firstFrame: 0
-      lastFrame: 59
+      lastFrame: 108
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

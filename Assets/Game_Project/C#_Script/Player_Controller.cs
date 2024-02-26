@@ -9,6 +9,7 @@ public class Player_Controller : NetworkBehaviour
 {
     [SerializeField]
     private float moveSpeed = 3f;
+    [SerializeField]
     private float runSpeed = 5f;
     private Vector2 input = Vector3.zero;
     private Vector3 direction;
@@ -58,22 +59,31 @@ public class Player_Controller : NetworkBehaviour
         Movement();
         Gravity();
         animator.Direction_Input(input.x, input.y);
+        animator.WalkAnimation(IsWalk);
+        animator.RunAnimation(IsRun);
     }
 
     private void Movement()
-    {
+    {  
+        input = Input_Controller.instance.MoveAction.ReadValue<Vector2>(); ;
+        direction = transform.forward * input.y + transform.right*input.x ;
+
+        IsWalk = input!= Vector2.zero? true : false;
+
         float Speed;
         if (Input_Controller.instance.RunAction.IsPressed())
         {
             Speed = runSpeed;
+            IsRun = true;
         }
         else
         {
             Speed = moveSpeed;
+            IsRun = false;
+
         }
 
-        input = Input_Controller.instance.MoveAction.ReadValue<Vector2>(); ;
-        direction = transform.forward * input.y +transform.right*input.x ;
+      
         characterController.Move(direction * Speed * Time.deltaTime);
 
         //float rotation = Mathf.Atan2(transform.eulerAngles.x, Mathf.Rad2Deg + LoookAt_Pos.transform.eulerAngles.y);

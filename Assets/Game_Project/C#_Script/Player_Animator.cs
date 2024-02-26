@@ -26,4 +26,12 @@ public class Player_Animator : MonoBehaviour
         animator.SetFloat("H_Input", H_Input);
         animator.SetFloat("V_Input", V_Input);
     }
+    public void WalkAnimation(bool value)
+    {
+        animator.SetBool("IsWalk", value);
+    }
+    public void RunAnimation(bool value)
+    {
+        animator.SetBool("IsRun", value);
+    }
 }
