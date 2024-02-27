@@ -34,7 +34,7 @@ public class AimStateManager : MonoBehaviour
                 //          Y_axis += Input.GetAxis("Mouse X") * RotationSwnsitivity;
                 //          X_axis -= Input.GetAxis("Mouse Y") * RotationSwnsitivity;
                 //#endif
-                X_Axis = Mathf.Clamp(X_Axis, -20, 20);
+                X_Axis = Mathf.Clamp(X_Axis, 0, 20);
             }
 
             tagetRotation = Vector3.SmoothDamp(tagetRotation, new Vector3(X_Axis, Y_Axis), ref CurrentVelocity, 0.8f);

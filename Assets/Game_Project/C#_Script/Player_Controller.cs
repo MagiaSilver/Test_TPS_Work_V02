@@ -71,7 +71,7 @@ public class Player_Controller : NetworkBehaviour
         //if(Input_Controller.instance.MoveAction.IsPressed())
         Movement();
         Gravity();
-        animator.Direction_Input(input.x, input.y);
+        animator.Direction_Input(input.normalized.x, input.normalized.y);
         animator.WalkAnimation(IsWalk);
         animator.RunAnimation(IsRun);
         animator.CrouchAnimation(IsCrouch);
@@ -151,7 +151,6 @@ public class Player_Controller : NetworkBehaviour
     public void Server_ChangeCollisionSize(GameObject player, float y_center, float height, int direction)
     {
         Observers_ChangeCollisionSize(player, y_center, height, direction);
-        // mPV_Player.SetCollision(y_center, height, direction);
     }
     [ObserversRpc]
     public void Observers_ChangeCollisionSize(GameObject player, float y_center, float height, int direction)

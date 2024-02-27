@@ -284,10 +284,10 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   ProneAction:
-    m_Name: 
+    m_Name: Prone
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: 8aea7bb3-932a-408d-89ac-c1317af34a65
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
