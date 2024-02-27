@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Object;
@@ -15,8 +15,10 @@ public class Player_Controller : NetworkBehaviour
     private Vector3 direction;
     [SerializeField]
     private CharacterController characterController;
-
     [SerializeField]
+    private CapsuleCollider capsuleCollider;
+
+   [SerializeField]
     private float ground_Y_Offset;
     [SerializeField]
     private LayerMask groundMask;
@@ -46,6 +48,17 @@ public class Player_Controller : NetworkBehaviour
             gameObject.GetComponent <Player_Controller>().enabled = false;
         }
     }
+    private void OnEnable()
+    {
+        Input_Controller.instance.CrouchAction.performed += CrouchActivate;
+        Input_Controller.instance.ProneAction.performed += ProneActivate;
+    }
+    private void OnDisable()
+    {
+        Input_Controller.instance.CrouchAction.performed -= CrouchActivate;
+        Input_Controller.instance.ProneAction.performed -= ProneActivate;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +74,8 @@ public class Player_Controller : NetworkBehaviour
         animator.Direction_Input(input.x, input.y);
         animator.WalkAnimation(IsWalk);
         animator.RunAnimation(IsRun);
+        animator.CrouchAnimation(IsCrouch);
+        animator.ProneAnimation(IsProne);
     }
 
     private void Movement()
@@ -90,7 +105,6 @@ public class Player_Controller : NetworkBehaviour
         transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, LoookAt_Pos.transform.eulerAngles.y, ref CurentVeclocity, 0.01f);
 
     }
-
     private bool IsGrounded()
     {
         SpherePos = new Vector3(transform.position.x, transform.position.y - ground_Y_Offset, transform.position.z);
@@ -104,6 +118,49 @@ public class Player_Controller : NetworkBehaviour
 
         characterController.Move(Velocity * Time.deltaTime);
     }
+
+    private void CrouchActivate(InputAction.CallbackContext context)
+    {
+        Debug.LogError("CrouchActivate");
+        if (context.performed && IsGrounded())
+        {
+            IsCrouch = !IsCrouch;
+            IsProne = false;
+            //playerAction.Crouch(isCrouch);
+            //playerAction.Crawl(isCrawl);
+
+            if (IsCrouch)
+                Server_ChangeCollisionSize(this.gameObject, 0.4f, 0.86f, 1);
+            else
+                Server_ChangeCollisionSize(this.gameObject, 0.9f, 1.81f, 1);
+        }
+    }
+    private void ProneActivate(InputAction.CallbackContext context)
+    {
+        Debug.LogError("CrouchActivate");
+        if (context.performed && IsGrounded())
+        {
+            IsProne = !IsProne;
+            IsCrouch = false;
+            if (IsProne)Server_ChangeCollisionSize(this.gameObject, 0.2f, 1.4f, 2);
+            else Server_ChangeCollisionSize(this.gameObject, 0.9f, 1.81f, 1);
+        }
+    }
+
+    [ServerRpc]
+    public void Server_ChangeCollisionSize(GameObject player, float y_center, float height, int direction)
+    {
+        Observers_ChangeCollisionSize(player, y_center, height, direction);
+        // mPV_Player.SetCollision(y_center, height, direction);
+    }
+    [ObserversRpc]
+    public void Observers_ChangeCollisionSize(GameObject player, float y_center, float height, int direction)
+    {
+        player.GetComponent<Player_Controller>().capsuleCollider.height = height;
+        player.GetComponent<Player_Controller>().capsuleCollider.center = new Vector3(0, y_center, 0);
+        player.GetComponent<Player_Controller>().capsuleCollider.direction = direction;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;

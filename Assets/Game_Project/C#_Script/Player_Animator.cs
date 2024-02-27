@@ -34,4 +34,12 @@ public class Player_Animator : MonoBehaviour
     {
         animator.SetBool("IsRun", value);
     }
+    public void CrouchAnimation(bool value)
+    {
+        animator.SetBool("IsCrouch", value);
+    }
+    public void ProneAnimation(bool value)
+    {
+        animator.SetBool("IsProne", value);
+    }
 }

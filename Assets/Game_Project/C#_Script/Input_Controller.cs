@@ -14,7 +14,7 @@ public class Input_Controller : MonoBehaviour
     public InputAction RunAction;
     public InputAction JumpAction;
     public InputAction CrouchAction;
-    public InputAction CrawlAction;
+    public InputAction ProneAction;
     public InputAction CameraAction;
 
     private void Awake()
@@ -28,7 +28,7 @@ public class Input_Controller : MonoBehaviour
         RunAction = playerInput.actions["Run"];
         JumpAction = playerInput.actions["Jump"];
         CrouchAction = playerInput.actions["Crouch"];
-        CrawlAction = playerInput.actions["Crawl"];
+        ProneAction = playerInput.actions["Crawl"];
         CameraAction = playerInput.actions["Camera"];
     }
 
