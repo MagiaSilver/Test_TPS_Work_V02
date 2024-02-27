@@ -4,6 +4,7 @@ using UnityEngine;
 using FishNet.Object;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using Unity.VisualScripting;
 
 public class Player_Controller : NetworkBehaviour
 {
@@ -12,6 +13,7 @@ public class Player_Controller : NetworkBehaviour
     [SerializeField]
     private float runSpeed = 5f;
     private Vector2 input = Vector3.zero;
+    float X_Cal,Y_Cal;
     private Vector3 direction;
     [SerializeField]
     private CharacterController characterController;
@@ -71,7 +73,9 @@ public class Player_Controller : NetworkBehaviour
         //if(Input_Controller.instance.MoveAction.IsPressed())
         Movement();
         Gravity();
-        animator.Direction_Input(input.normalized.x, input.normalized.y);
+        X_Cal = Mathf.Lerp(X_Cal , input.normalized.x, 0.05f);
+        Y_Cal = Mathf.Lerp(Y_Cal, input.normalized.y, 0.05f);
+        animator.Direction_Input(X_Cal, Y_Cal);
         animator.WalkAnimation(IsWalk);
         animator.RunAnimation(IsRun);
         animator.CrouchAnimation(IsCrouch);
