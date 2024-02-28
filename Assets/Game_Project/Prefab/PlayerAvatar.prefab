@@ -627,7 +627,7 @@ MonoBehaviour:
   X_Axis: 0
   Y_Axis: 0
   camFollowPos: {fileID: 4208314865737791105}
-  RotationSwnsitivity: 0.5
+  RotationSwnsitivity: 3
 --- !u!114 &3729354910962825243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1261,6 +1261,7 @@ GameObject:
   - component: {fileID: 8243380844443459699}
   - component: {fileID: 2655856580942429487}
   - component: {fileID: 6100512147081419772}
+  - component: {fileID: 3190981710174602601}
   m_Layer: 0
   m_Name: vBot@lowpoly
   m_TagString: Untagged
@@ -1319,6 +1320,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+--- !u!114 &3190981710174602601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8731793167751297737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 3729354910962825243}
+  _networkObjectCache: {fileID: 0}
+  IgnoredParameters: []
+  _animator: {fileID: 2655856580942429487}
+  _smoothFloats: 1
+  _interpolation: 2
+  _clientAuthoritative: 1
+  _sendToOwner: 0
 --- !u!1 &8894609375343708987
 GameObject:
   m_ObjectHideFlags: 0
