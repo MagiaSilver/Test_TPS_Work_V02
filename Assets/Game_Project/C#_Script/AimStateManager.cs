@@ -37,7 +37,7 @@ public class AimStateManager : MonoBehaviour
                 X_Axis = Mathf.Clamp(X_Axis, 0, 20);
             }
 
-            tagetRotation = Vector3.SmoothDamp(tagetRotation, new Vector3(X_Axis, Y_Axis), ref CurrentVelocity, 0.8f);
+            tagetRotation = Vector3.SmoothDamp(tagetRotation, new Vector3(X_Axis, Y_Axis), ref CurrentVelocity, 1.5f);
             camFollowPos.eulerAngles = tagetRotation;
 
            // transform.position = Target.position - (transform.forward * ZoomValue);

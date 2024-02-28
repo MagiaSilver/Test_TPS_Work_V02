@@ -92,12 +92,14 @@ public class Player_Controller : NetworkBehaviour
         float Speed;
         if (Input_Controller.instance.RunAction.IsPressed())
         {
-            Speed = runSpeed;
+            if (IsProne) Speed = runSpeed / 2;
+            else Speed = runSpeed;
             IsRun = true;
         }
         else
         {
-            Speed = moveSpeed;
+            if (IsProne) Speed = moveSpeed / 2;
+            else Speed = moveSpeed;
             IsRun = false;
 
         }
