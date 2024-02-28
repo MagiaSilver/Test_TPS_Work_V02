@@ -26,7 +26,7 @@ public class AimStateManager : MonoBehaviour
             
             if (Input_Controller.instance.CameraAction.IsInProgress())
             {
-                #if UNITY_ANDRIOD
+                #if UNITY_ANDROID
                 Y_Axis += Input_Controller.instance.CameraAction.ReadValue<Vector2>().x * RotationSwnsitivity;
                 X_Axis -= Input_Controller.instance.CameraAction.ReadValue<Vector2>().y * RotationSwnsitivity;
                 #endif
