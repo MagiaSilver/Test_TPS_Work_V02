@@ -20,7 +20,7 @@ public class Player_Controller : NetworkBehaviour
     [SerializeField]
     private CapsuleCollider capsuleCollider;
 
-   [SerializeField]
+    [SerializeField]
     private float ground_Y_Offset;
     [SerializeField]
     private LayerMask groundMask;
@@ -48,6 +48,7 @@ public class Player_Controller : NetworkBehaviour
         else
         {
             gameObject.GetComponent <Player_Controller>().enabled = false;
+            gameObject.GetComponent<AimStateManager>().enabled = false;
         }
     }
     private void OnEnable()

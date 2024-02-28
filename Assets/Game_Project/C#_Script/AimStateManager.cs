@@ -9,8 +9,9 @@ public class AimStateManager : MonoBehaviour
     public float X_Axis, Y_Axis;
     [SerializeField] private Transform camFollowPos;
     [SerializeField] private float RotationSwnsitivity = 8f;
+    [SerializeField] private float smoothTime = 3f;
     Vector3 tagetRotation;
-     Vector3 CurrentVelocity;
+    Vector3 CurrentVelocity;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +23,13 @@ public class AimStateManager : MonoBehaviour
     {
         if (camFollowPos != null)
         {
-            //#if UNITY_ANDROID
+            
             if (Input_Controller.instance.CameraAction.IsInProgress())
             {
+                #if UNITY_ANDRIOD
                 Y_Axis += Input_Controller.instance.CameraAction.ReadValue<Vector2>().x * RotationSwnsitivity;
                 X_Axis -= Input_Controller.instance.CameraAction.ReadValue<Vector2>().y * RotationSwnsitivity;
-
+                #endif
                 /*Y_axis += playerInput.actions["MouseX"].ReadValue<float>() * RotationSwnsitivity;
                 X_axis -= playerInput.actions["MouseY"].ReadValue<float>() * RotationSwnsitivity;*/
                 //#else
@@ -37,7 +39,7 @@ public class AimStateManager : MonoBehaviour
                 X_Axis = Mathf.Clamp(X_Axis, 0, 20);
             }
 
-            tagetRotation = Vector3.SmoothDamp(tagetRotation, new Vector3(X_Axis, Y_Axis), ref CurrentVelocity, 1.5f);
+            tagetRotation = Vector3.Lerp(tagetRotation, new Vector3(X_Axis, Y_Axis), smoothTime);
             camFollowPos.eulerAngles = tagetRotation;
 
            // transform.position = Target.position - (transform.forward * ZoomValue);
