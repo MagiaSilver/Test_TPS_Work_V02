@@ -79,8 +79,8 @@ public class Player_Controller : NetworkBehaviour
         animator.Direction_Input(X_Cal, Y_Cal);
         animator.WalkAnimation(IsWalk);
         animator.RunAnimation(IsRun);
-        animator.CrouchAnimation(IsCrouch);
-        animator.ProneAnimation(IsProne);
+       // animator.CrouchAnimation(IsCrouch);
+       // animator.ProneAnimation(IsProne);
     }
 
     private void Movement()
@@ -133,8 +133,9 @@ public class Player_Controller : NetworkBehaviour
         {
             IsCrouch = !IsCrouch;
             IsProne = false;
-            //playerAction.Crouch(isCrouch);
-            //playerAction.Crawl(isCrawl);
+
+            animator.CrouchAnimation(IsCrouch);
+            animator.ProneAnimation(IsProne);
 
             if (IsCrouch)
                 Server_ChangeCollisionSize(this.gameObject, 0.4f, 0.86f, 1);
@@ -149,6 +150,10 @@ public class Player_Controller : NetworkBehaviour
         {
             IsProne = !IsProne;
             IsCrouch = false;
+
+            animator.CrouchAnimation(IsCrouch);
+            animator.ProneAnimation(IsProne);
+
             if (IsProne)Server_ChangeCollisionSize(this.gameObject, 0.2f, 1.4f, 2);
             else Server_ChangeCollisionSize(this.gameObject, 0.9f, 1.81f, 1);
         }
