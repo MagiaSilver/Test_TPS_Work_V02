@@ -73,8 +73,8 @@ public class Player_Controller : NetworkBehaviour
         //if(Input_Controller.instance.MoveAction.IsPressed())
         Movement();
         Gravity();
-        X_Cal = Mathf.Lerp(X_Cal , input.normalized.x, 0.05f);
-        Y_Cal = Mathf.Lerp(Y_Cal, input.normalized.y, 0.05f);
+        X_Cal = Mathf.Lerp(X_Cal , input.normalized.x, 0.15f);
+        Y_Cal = Mathf.Lerp(Y_Cal, input.normalized.y, 0.15f);
         animator.Direction_Input(X_Cal, Y_Cal);
         animator.WalkAnimation(IsWalk);
         animator.RunAnimation(IsRun);
