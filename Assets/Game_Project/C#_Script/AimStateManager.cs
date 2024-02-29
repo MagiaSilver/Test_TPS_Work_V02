@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class AimStateManager : MonoBehaviour
 {
-    public Cinemachine.AxisState axisState_X, axisState_Y;
     public float X_Axis, Y_Axis;
     [SerializeField] private Transform camFollowPos;
     [SerializeField] private float RotationSwnsitivity = 8f;
